@@ -21,8 +21,8 @@ public class AceptaElRetoEl_pan_de_bodas {
         Scanner sc = new Scanner (System.in);
         int tamaño;
         int sol=0;        
-        boolean seguir;       
-   while(seguir=true)
+        boolean seguir=true;       
+   while(seguir==true)
    {  
        tamaño=sc.nextInt();
        
@@ -35,18 +35,51 @@ public class AceptaElRetoEl_pan_de_bodas {
            
       String sillas;
       
-      sillas=sc.nextLine();
       
+      sillas=sc.nextLine();/*cantidad de comensales*/
       
-          
-          
-      }
+     for(int i=0;i<tamaño;i++)
+     {
+         if(sillas.charAt(i)=='D'||sillas.charAt(i)=='I')/* encontrar primera letra D o I */
+         {
+             for(int j=i+1;j<tamaño;j++)
+             {
+                 if(sillas.charAt(i)=='D'&&sillas.charAt(j)=='D')
+                 {
+                     sol=1;
+                 }
+                 if(sillas.charAt(i)=='D'&&sillas.charAt(j)=='I')
+                 {
+                     sol=0;
+                 }
+                 if(sillas.charAt(i)=='I'&&sillas.charAt(j)=='I')
+                 {
+                     sol=1;
+                 }
+                 if(sillas.charAt(i)=='I'&&sillas.charAt(j)=='D')
+                 {
+                     sol=0;
+                 }
+                 else{sol=1;}
+             }
+             
+         }
+         if(sillas.charAt(i)=='.'&&(sillas.charAt(i+1)=='D'||sillas.charAt(i+1)=='I')&&(sillas.charAt(i-1)=='D'||sillas.charAt(i-1)=='I'))
+         {
+            sol=0; 
+         }
+     }
+     
       if(sol==0)
       {System.out.println("ALGUNO NO COME");
       }
       if(sol==1)
       { System.out.println("TODOS COMEN");
       }
+      
+          
+      }
+
       
        }
       
